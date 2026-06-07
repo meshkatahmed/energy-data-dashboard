@@ -20,7 +20,7 @@ export interface FetchGenerationParams {
  * Fetch hourly generation data from ENTSO‑E.
  *
  * The function builds a request URL using the provided parameters and the API key stored in
- * `process.env.ENTSOE_API_KEY`. It returns an array of {@link GenerationData}.
+ * `process.env.NEXT_PUBLIC_ENTSOE_API_KEY`. It returns an array of {@link GenerationData}.
  *
  * ENTSO‑E historically returns XML; for this prototype we assume JSON is returned (or that the
  * required transformation is handled elsewhere). Adjust the parsing logic if you need to work with the
@@ -29,9 +29,10 @@ export interface FetchGenerationParams {
 export async function fetchGeneration(
   params: FetchGenerationParams = {}
 ): Promise<GenerationData[]> {
-  const apiKey = process.env.ENTSOE_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_ENTSOE_API_KEY;
+  console.log(apiKey);
   if (!apiKey) {
-    throw new Error("ENTSOE_API_KEY is not defined in .env.local");
+    throw new Error("NEXT_PUBLIC_ENTSOE_API_KEY is not defined in .env.local");
   }
 
   const baseUrl = "https://web-api.tp.entsoe.eu/api";

@@ -1,3 +1,5 @@
+import React from "react";
+
 export const metadata = {
   title: 'Energy Data Dashboard',
   description: 'A dashboard for visualizing energy data.',
